@@ -30,6 +30,7 @@ public class Server {
       // ous.write(userName.getBytes());
 
       while (!quit) {
+        // when connecting with a browser, read all first before returning the response
         String message = br.readLine();
         System.out.printf("Client: %s\n", message);
         if (message.equals("quit")) {
@@ -37,6 +38,7 @@ public class Server {
           quit = true;
         } else {
           if (!client.isClosed()) {
+            // "HTTP/1.1 200 OK\r\n\r\n" +
             ous.write((message + "\n").getBytes());
           } else {
             System.err.println("Connection to client is closed!");

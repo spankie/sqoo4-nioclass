@@ -1,11 +1,14 @@
 package app.single;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -22,6 +25,9 @@ public class Client {
         InputStream input = socket.getInputStream();
         OutputStream output = socket.getOutputStream()) {
       BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+      // BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
+      // PrintWriter pr = new PrintWriter(output, true);
+      // pr.println("Hello there with a new line!");
       Console console = System.console();
       while (!quit) {
         String message = console.readLine();
