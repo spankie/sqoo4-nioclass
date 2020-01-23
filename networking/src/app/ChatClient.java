@@ -6,7 +6,7 @@ import java.io.*;
 /**
  * This is the chat client program. Type 'bye' to terminte the program.
  *
- * @author www.codejava.net
+ * @author Spankie Dee
  */
 public class ChatClient {
   private String hostname;
