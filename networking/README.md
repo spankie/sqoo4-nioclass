@@ -1,3 +1,5 @@
+Check and sanitize source code
+
 # NETWORKING IN JAVA
 
 NETWORK is group of computers connected together.
@@ -24,6 +26,8 @@ socket programming is used for communication between applications running on dif
 
 A socket is one endpoint of a two way communication link between two programs running on the network. The socket is bound to a port number that the TCP layer can identify the application that data is destined to be sent.
 
+A port is a 16bit unsigned integer. _Max 65535_
+
 ### Few methods in a socket
 
 - public InputStream getInputStream()
@@ -34,3 +38,11 @@ A socket is one endpoint of a two way communication link between two programs ru
 
 - public Socket accept()
 - public synchronized void close()
+
+## Examples:
+
+- single (You can test the server using telnet on windows or nc on macos. Test with browser to see how browsers connects to a server)
+- portscanner
+- inet
+
+UDP id a connectionless protocol, with no connection between the endpoints in the network.
