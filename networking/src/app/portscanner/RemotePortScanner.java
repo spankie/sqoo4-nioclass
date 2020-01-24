@@ -30,36 +30,37 @@ public class RemotePortScanner {
     // boolean value which is used to control the validation process
     boolean isValid = false;
 
+    // port 80 - 2000
+
+    // get the first port to scan
     // as long as isValid is false, try to obtain a valid port number
     while (!isValid) {
       try {
-        System.out.print("Please enter the first port: "); // ask user to type the first port
+        System.out.print("Please enter the first port to start from: "); // ask user to type the first port
         String portString = reader.readLine(); // read the port number
         fromPort = Integer.parseInt(portString); // try to convert string to integer
-        if (fromPort >= 0 && fromPort <= 65536) // verify that port is in the valid range
+        if (fromPort > 0 && fromPort < 65536) // verify that port is in the valid range
         {
           isValid = true; // set variable to true and exit the while loop
         } else {
           System.out.println("Invalid port! Port range is: 0 - 65536"); // inform user about the valid port range
         }
-      } catch (NumberFormatException e1) {
+      } catch (Exception e1) {
         System.out.println("Please insert a number!"); // if the user does not enter a number
-      } catch (Exception e) // error when trying to read user input
-      {
-        System.out.println("Cannot read the first port number! " + e.toString());
       }
     }
 
     isValid = false; // reinitialize the boolean value to false in order to start a new validation
                      // process
 
+    // Get the last port to scan
     // as long as isValid is false, try to obtain a valid port number
     while (!isValid) {
       try {
-        System.out.print("Please enter the last port: "); // ask user to type the last port
+        System.out.print("Please enter the last port to end the scan: "); // ask user to type the last port
         String portString = reader.readLine(); // read the port number
         toPort = Integer.parseInt(portString); // try to convert string to integer
-        if (toPort >= 0 && toPort <= 65536) // verify that port is in the valid range
+        if (toPort > 0 && toPort < 65536) // verify that port is in the valid range
         {
           if (toPort >= fromPort) // verify if the toPort is greated than fromPort
           {
@@ -68,11 +69,8 @@ public class RemotePortScanner {
         } else {
           System.out.println("Invalid port! Port range is: 0 - 65536"); // inform user about the valid port range
         }
-      } catch (NumberFormatException e1) {
+      } catch (Exception e) {
         System.out.println("Please insert a number!"); // if the user does not enter a number
-      } catch (Exception e) // error when trying to read user input
-      {
-        System.out.println("Cannot read the last port number! " + e.toString());
       }
     }
 
