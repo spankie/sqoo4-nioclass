@@ -26,13 +26,13 @@ public class App {
         try {
             fin = new FileReader("./.classpath");
             // fin = new FileInputStream("./.classpath");
-            // while ((b = fin.read()) >= 0) {
-            // // byte bb = 127;
-            // // System.out.println((byte) b); // check the character equivalent of each
-            // System.out.print((char) b);
-            // // System.out.print((char) b);
-            // // System.out.print(b);
-            // }
+            while ((b = fin.read()) >= 0) {
+                // byte bb = 18909;
+                // System.out.println((byte) b); // check the character equivalent of each
+                System.out.println((byte) b);
+                // System.out.print((char) b);
+                // System.out.print(b);
+            }
             // isr = new InputStreamReader(fin);
             br = new BufferedReader(fin);
             while ((line = br.readLine()) != null) {
@@ -81,6 +81,7 @@ public class App {
                     System.err.println("Exception: " + e.getMessage());
                 }
             }
+            System.out.println();
 
         } catch (Exception e) {
             System.err.println("Exception : " + e.getMessage());
@@ -117,8 +118,8 @@ public class App {
         // ReadWithInputStream();
         // ReadWithNIO();
         // WriteWithOutputStream();
-        // PipedStream();
-        DoTryWithResource();
+        PipedStream();
+        // DoTryWithResource();
     }
 
     public static void DoTryWithResource() {
@@ -129,7 +130,7 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getClass().getSimpleName() + " - " + e.getMessage());
             for (Throwable t : e.getSuppressed()) {
-                System.out.println("getSuppressed()" + t.getClass().getSimpleName() + " - " + t.getMessage());
+                System.out.println("getSuppressed() - " + t.getClass().getSimpleName() + " - " + t.getMessage());
             }
         }
         // finally {

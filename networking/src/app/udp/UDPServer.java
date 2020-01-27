@@ -10,10 +10,12 @@ class UDPServer {
       byte[] receiveData = new byte[1024];
       byte[] sendData = new byte[1024];
       while (true) {
+        // receive datagram packets from udp connections
         DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
         socket.receive(receivePacket);
+
         String sentence = new String(receivePacket.getData());
-        System.out.println("RECEIVED " + sentence);
+        System.out.println("RECEIVED: " + sentence);
         String stringData = "hello client!";
         sendData = stringData.getBytes();
         InetAddress clientIpAddress = receivePacket.getAddress();

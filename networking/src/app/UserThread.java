@@ -30,6 +30,8 @@ public class UserThread extends Thread {
 
       printUsers();
 
+      // reads the username of the user from the stream;
+      // since we know it is the first thing the client will send
       String userName = reader.readLine();
       server.addUserName(userName);
 
@@ -48,7 +50,7 @@ public class UserThread extends Thread {
       server.removeUser(userName, this);
       socket.close();
 
-      serverMessage = userName + " has quitted.";
+      serverMessage = userName + " has left.";
       server.broadcast(serverMessage, this);
 
     } catch (IOException ex) {

@@ -32,7 +32,7 @@ public class Server {
       while (!quit) {
         // when connecting with a browser, read all first before returning the response
         String newMessage = br.readLine();
-        message += newMessage;
+        message += newMessage + "\n";
         System.out.printf("Client: %s\n", message);
         if (message.equals("quit")) {
           message = "Thanks for chatting with me...";

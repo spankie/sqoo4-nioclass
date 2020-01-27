@@ -29,7 +29,7 @@ public class ReadThread extends Thread {
   }
 
   public void run() {
-    while (true) {
+    while (!socket.isClosed()) {
       try {
         String response = reader.readLine();
         System.out.println("\n" + response);
@@ -40,7 +40,7 @@ public class ReadThread extends Thread {
         }
       } catch (IOException ex) {
         System.out.println("Error reading from server: " + ex.getMessage());
-        ex.printStackTrace();
+        // ex.printStackTrace();
         break;
       }
     }

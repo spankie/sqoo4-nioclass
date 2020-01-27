@@ -17,6 +17,7 @@ import java.net.Socket;
 public class Client {
   static boolean quit = false;
   static final int port = 8081;
+  // localhost || 127.0.0.1 || ip_address(192.168.1.4)
   static final String hostname = "localhost";
 
   public static void main(String[] args) {
@@ -37,7 +38,7 @@ public class Client {
         System.out.printf("Me: %s\n", message);
         output.write((message + "\n").getBytes());
         String serverMessage = reader.readLine();
-        System.out.printf("Server: %s\n", serverMessage);
+        System.out.printf("%s\n", serverMessage);
       }
     } catch (IOException ex) {
       System.out.println("Error getting input stream: " + ex.getMessage());

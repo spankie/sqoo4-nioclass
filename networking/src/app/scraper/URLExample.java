@@ -17,15 +17,15 @@ public class URLExample {
     /*
      * http://example.com
      */
-    URL url = new URL("http://finance.yahoo.com/q?s=ORCL");
+    URL url = new URL("https://github.com/spankie/sqoo4-nioclass/blob/master/networking/src/app/server/Server.java");
     URLConnection myURL = url.openConnection();
     BufferedReader in = new BufferedReader(new InputStreamReader(myURL.getInputStream()));
     String inputLine;
-    String pattern = "<span id=\"yfs_l84_orcl\">(.+?)</span>";
+    String pattern = "<div id=\"js-flash-container\">(.+?)</div>";
     Pattern r = Pattern.compile(pattern);
     while ((inputLine = in.readLine()) != null) {
       // System.out.println(inputLine);
-      if (inputLine.contains("yfs_l84_orcl")) {
+      if (inputLine.contains("js-flash-container")) {
         Matcher m = r.matcher(inputLine);
         if (m.find()) {
           System.out.println(m.group(1));
