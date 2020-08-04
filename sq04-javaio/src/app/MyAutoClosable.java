@@ -12,9 +12,8 @@ public class MyAutoClosable implements AutoCloseable {
 
   @Override
   public void close() throws Exception {
-    // TODO Auto-generated method stub
+    System.out.println("I am closing");
     throw new Exception("Closing exception");
-    // System.out.println("I am closing");
   }
 
 }
