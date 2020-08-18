@@ -27,7 +27,7 @@ public class App {
 	private static Integer counter = 0;
 
 	private static void Lambda(SomeInterface s) {
-		System.out.println(s.run("Hello", "World"));
+		System.out.println(s.run("Hello"));
 	}
 
 	private static void wasCalled() {
@@ -217,7 +217,7 @@ public class App {
 		// numbers.forEach( method );
 
 		SomeInterface method = s -> {
-		return s + " " + ss;
+			return s + " world";
 		};
 		Lambda(method);
 
