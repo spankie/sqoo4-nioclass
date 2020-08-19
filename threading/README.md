@@ -1,6 +1,7 @@
-## THREADING
+## CONCURRENCY vs PARALLELISM
 
-Concurency is the art of doing several things at the same time.
+
+## MULTI THREADING
 
 An application can be composed of many threads
 

@@ -23,13 +23,12 @@ public class RaceCondition3 {
         public void run() {
           for (int i = 0; i < 10; i++) {
             longWrapper.incrementValue();
-            System.out.printf("id: %d = %d\n", this.getId(), longWrapper.getValue());
+            System.out.printf("id: %d = %d\n", i, longWrapper.getValue());
           }
         }
       };
       threads[i] = new Thread(r);
       threads[i].start();
-      // threads[i].wait();
     }
 
     for (int i = 0; i < threads.length; i++) {
