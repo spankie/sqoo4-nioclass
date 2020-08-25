@@ -19,8 +19,11 @@ public class Server {
   public static void main(String[] args) {
     System.out.printf("Server is waiting for connection on port %d\n", port);
     try (ServerSocket serverSocket = new ServerSocket(port)) {
+      // accept() blocks the execution of the code
+      // until someone connects
       Socket client = serverSocket.accept();
-      System.out.println("New user connected");
+
+      System.out.println("New client connected");
       // Console console = System.console();
       InputStream is = client.getInputStream();
       BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -33,7 +36,7 @@ public class Server {
         // when connecting with a browser, read all first before returning the response
         String newMessage = br.readLine();
         message += newMessage + "\n";
-        System.out.printf("Client: %s\n", message);
+        // System.out.printf("Client: %s\n", message);
         if (message.equals("quit")) {
           message = "Thanks for chatting with me...";
           quit = true;
@@ -41,7 +44,9 @@ public class Server {
           if (!client.isClosed()) {
             // "HTTP/1.1 200 OK\r\n\r\n" +
             if (newMessage.equals("") || newMessage == null) {
-              ous.write(("HTTP/1.1 200 OK\r\n\r\n" + message + "\n").getBytes());
+              System.out.println(message);
+              // ous.write(("HTTP/1.1 200 OK\r\n\r\n" + message + "\n").getBytes());
+              ous.write(("HTTP/1.1 200 OK\r\n\r\n" + "<h1>Hello Spankie</h1>" + "\n").getBytes());
               ous.flush();
               ous.close();
               quit = true;
