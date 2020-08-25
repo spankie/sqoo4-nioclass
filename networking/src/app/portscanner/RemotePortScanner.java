@@ -14,16 +14,22 @@ public class RemotePortScanner {
     InputStreamReader in = new InputStreamReader(System.in);
     BufferedReader reader = new BufferedReader(in);
 
-    String targetIp = ""; // store the targe ip address
-    int fromPort = 0; // store the starting port
-    int toPort = 0; // store the ending port
+     // store the targe ip address
+    String targetIp = "";
+    // store the starting port
+    int fromPort = 0; 
+     // store the ending port
+    int toPort = 0;
 
-    System.out.print("Please enter the target ip address: "); // ask user to enter the ip address
+    // ask user to enter the ip address
+    System.out.print("Please enter the target ip address: "); 
 
     try {
-      targetIp = reader.readLine(); // read the target ip address
-    } catch (Exception e) // error when trying to read user input
-    {
+       // read the target ip address
+      targetIp = reader.readLine();
+    }
+     // error when trying to read user input
+    catch (Exception e) {
       System.out.println("Cannot read the ip address! " + e.toString());
     }
 
@@ -36,63 +42,88 @@ public class RemotePortScanner {
     // as long as isValid is false, try to obtain a valid port number
     while (!isValid) {
       try {
-        System.out.print("Please enter the first port to start from: "); // ask user to type the first port
-        String portString = reader.readLine(); // read the port number
-        fromPort = Integer.parseInt(portString); // try to convert string to integer
-        if (fromPort > 0 && fromPort < 65536) // verify that port is in the valid range
+         // ask user to type the first port
+        System.out.print("Please enter the first port to start from: ");
+         // read the port number
+        String portString = reader.readLine();
+         // try to convert string to integer
+        fromPort = Integer.parseInt(portString);
+         // verify that port is in the valid range
+        if (fromPort > 0 && fromPort < 65536)
         {
-          isValid = true; // set variable to true and exit the while loop
+           // set variable to true and exit the while loop
+          isValid = true;
         } else {
-          System.out.println("Invalid port! Port range is: 0 - 65536"); // inform user about the valid port range
+           // inform user about the valid port range
+          System.out.println("Invalid port! Port range is: 1 - 65535");
         }
       } catch (Exception e1) {
-        System.out.println("Please insert a number!"); // if the user does not enter a number
+         // if the user does not enter a number
+        System.out.println("Please insert a number!");
       }
     }
 
-    isValid = false; // reinitialize the boolean value to false in order to start a new validation
-                     // process
+    // reinitialize the boolean value to false in order to start a new validation
+    // process
+    isValid = false;
 
     // Get the last port to scan
     // as long as isValid is false, try to obtain a valid port number
     while (!isValid) {
       try {
-        System.out.print("Please enter the last port to end the scan: "); // ask user to type the last port
-        String portString = reader.readLine(); // read the port number
-        toPort = Integer.parseInt(portString); // try to convert string to integer
-        if (toPort > 0 && toPort < 65536) // verify that port is in the valid range
+        // ask user to type the last port
+        System.out.print("Please enter the last port to end the scan: ");
+        // read the port number
+        String portString = reader.readLine();
+        // try to convert string to integer
+        toPort = Integer.parseInt(portString);
+        // verify that port is in the valid range
+        if (toPort > 0 && toPort < 65536)
         {
-          if (toPort >= fromPort) // verify if the toPort is greated than fromPort
+          // verify if the toPort is greated than fromPort
+          if (toPort >= fromPort)
           {
-            isValid = true; // set the boolean value to true and exit the while loop
+            // set the boolean value to true and exit the while loop
+            isValid = true;
           }
         } else {
-          System.out.println("Invalid port! Port range is: 0 - 65536"); // inform user about the valid port range
+          // inform user about the valid port range
+          System.out.println("Invalid port! Port range is: 0 - 65536");
         }
       } catch (Exception e) {
-        System.out.println("Please insert a number!"); // if the user does not enter a number
+        // if the user does not enter a number
+        System.out.println("Please insert a number!");
       }
     }
 
-    int port = fromPort; // start with fromPort value
-    while (port >= fromPort && port <= toPort) // use the given port range
+    // start with fromPort value
+    int port = fromPort;
+    // use the given port range
+    while (port >= fromPort && port <= toPort)
     {
       try {
-        Socket socket = new Socket(targetIp, port); // try to open on socket connection using the specified ip address
-                                                    // and the test port number
-        System.out.println("Port " + port + " is in listening state!"); // print listening port
+        // try to open on socket connection using the specified ip address
+        // and the test port number
+        Socket socket = new Socket(targetIp, port);
+        // print listening port
+        System.out.println("Port " + port + " is in listening state! (open)");
         socket.close();
-      } catch (UnknownHostException e1) // catch block is executed if an invalid host was entered
-      {
+      } catch (UnknownHostException e1){
+        // catch block is executed if an invalid host was entered
         System.out.println("Unknown host exception " + e1.toString());
-      } catch (IOException e2) // execute when the port is already opened
-      {
-        System.out.println("Port " + port + " is not opened!"); // print what port is opened
-      } catch (Exception e) // execute if an other exception is raised
-      {
-        System.out.println(e.toString()); // print the error
+      } catch (IOException e2){
+        // execute when the port is already opened
+
+        // print what port is opened
+        System.out.println("Port " + port + " is closed!");
+      } catch (Exception e){
+        // execute if an other exception is raised
+
+        // print the error
+        System.out.println(e.toString());
       }
-      port++; // increment port number in order to test the next port
+      // increment port number in order to test the next port
+      port++;
     }
   }
 }
