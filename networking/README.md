@@ -2,7 +2,7 @@ Check and sanitize source code
 
 # NETWORKING IN JAVA
 
-NETWORK is group of computers connected together.
+NETWORK is a group of computers connected together.
 
 # TCP/IP Network layers
 
@@ -45,4 +45,4 @@ A port is a 16bit unsigned integer. _Max 65535_
 - portscanner
 - inet
 
-UDP id a connectionless protocol, with no connection between the endpoints in the network.
+UDP is a connectionless protocol, with no connection between the endpoints in the network.
