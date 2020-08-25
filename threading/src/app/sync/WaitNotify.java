@@ -32,8 +32,15 @@ class WaitNotify {
     new Thread() {
       public void run() {
         c.withdraw(15000);
+        // c2.withdraw();
       }
     }.start();
+    try {
+      Thread.sleep(3000);
+    } catch (InterruptedException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
     new Thread() {
       public void run() {
         c.deposit(10000);
