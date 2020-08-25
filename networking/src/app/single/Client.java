@@ -34,10 +34,14 @@ public class Client {
         String message = console.readLine();
         if (message.equals("quit")) {
           quit = true;
+          System.out.println("quitting client");
         }
         System.out.printf("Me: %s\n", message);
+        // send it out to the server
         output.write((message + "\n").getBytes());
-        String serverMessage = reader.readLine();
+        // read the server's message
+        String serverMessage = !quit ? reader.readLine() : "";
+        // print out the server's message
         System.out.printf("%s\n", serverMessage);
       }
     } catch (IOException ex) {
