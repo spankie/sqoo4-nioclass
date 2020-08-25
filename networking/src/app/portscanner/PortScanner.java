@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * PortScanner
+ * PortScanner of local ports
  */
 public class PortScanner {
 
@@ -17,6 +17,7 @@ public class PortScanner {
     int maxPort = 65535;
     while (port < maxPort) {
       try (ServerSocket ss = new ServerSocket(port)) {
+        /*
         // ServerSocket s = new ServerSocket(port);
         // System.out.printf("wainting for clients... on: %d\n", port);
         // boolean stop = false;
@@ -33,6 +34,7 @@ public class PortScanner {
         // out.close();
         // socket.close();
         // break;
+        */
       } catch (IOException e) {
         // System.err.printf("%s - Port %d %s\n", e.getClass().getSimpleName(), port,
         // e.getMessage());
